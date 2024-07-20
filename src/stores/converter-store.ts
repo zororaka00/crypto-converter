@@ -13,6 +13,7 @@ export const useConverterStore = defineStore('converter', {
     ],
     list_prices: [] as Array<{
         cryptocurrency: string,
+        symbol: string,
         to_usd: string
     }>
   }),
@@ -26,6 +27,7 @@ export const useConverterStore = defineStore('converter', {
                 const index = await data.findIndex((fd: any) => fd.symbol == `${(match as any)[1]}USDT`);
                 return {
                     cryptocurrency: d,
+                    symbol: (match as any)[1],
                     to_usd: general.numberToString(data[index].price, 4)
                 };
             }));

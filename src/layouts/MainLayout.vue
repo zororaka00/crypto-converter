@@ -38,20 +38,20 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container v-if="isLoad">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
+import { useGeneralStore } from '../stores/general-store';
 
-defineOptions({
-  name: 'MainLayout'
-});
-
+const general = useGeneralStore();
+const isLoad = ref(false);
 const linksList: EssentialLinkProps[] = [
   {
     title: 'Price Converter',
@@ -69,13 +69,21 @@ const linksList: EssentialLinkProps[] = [
     title: 'ETH Converter',
     caption: 'Ethereum Unit',
     icon: 'mdi-ethereum',
-    toLink: '/etc-converter'
+    toLink: '/eth-converter'
   },
 ];
-
 const leftDrawerOpen = ref(false);
 
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
+onMounted(() => {
+  general.is_mobile = window.innerWidth <= 768;
+  isLoad.value = true;
+});
+
+defineOptions({
+  name: 'MainLayout'
+});
 </script>

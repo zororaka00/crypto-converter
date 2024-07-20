@@ -16,13 +16,12 @@
     "bignumber.js": "^9.1.2",
     "pinia": "^2.0.11",
     "quasar": "^2.16.0",
-    "viem": "^2.17.8",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@types/node": "^12.20.21",
     "@quasar/app-vite": "^1.9.0",
+    "@types/node": "^12.20.21",
     "autoprefixer": "^10.4.2",
     "typescript": "^4.5.4"
   },

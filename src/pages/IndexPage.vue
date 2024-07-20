@@ -1,13 +1,10 @@
 <template>
   <!-- <q-page class="row items-center justify-evenly"> -->
   <q-page class="q-pa-md">
-    <q-card style="max-width: 100%;">
-      <div v-if="!isMobile" id='frame' style='width:100%;'><iframe data-aa='2340259' src='//ad.a-ads.com/2340259?size=728x90' style='width:100%; height:90px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe><a style='display: block; text-align: right; font-size: 12px' id='preview-link' href='https://aads.com/campaigns/new/?source_id=2340259&source_type=ad_unit&partner=2340259'>Advertise here</a></div>
-      <div v-else id='frame' style='width:320px;'><iframe data-aa='2340260' src='//ad.a-ads.com/2340260?size=320x50' style='width:320px; height:50px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe><a style='display: block; text-align: right; font-size: 12px' id='preview-link' href='https://aads.com/campaigns/new/?source_id=2340260&source_type=ad_unit&partner=2340260'>Advertise here</a></div>
-    </q-card><br/>
+    <AdsComponent /><br/>
     <q-card flat bordered class="col text-center b-card">
       <q-card-section>
-          <div class="text-h5 text-bold">Crypto Converter</div>
+          <div class="text-h5 text-bold">Price Converter</div>
       </q-card-section>
 
       <q-separator inset />
@@ -22,19 +19,27 @@
           class="full-width"
         /><br/>
         <q-input
-            filled
-            v-model="amount"
-            type="number"
-            label="Input Amount"
-            @update:model-value="updateToUSD()"
-        /><br/>
+          filled
+          v-model="amount"
+          type="number"
+          label="Input Amount"
+          @update:model-value="updateToUSD()"
+        >
+          <template v-slot:append>
+            <small class="text-bold">{{ symbol }}</small>
+          </template>
+        </q-input><br/>
         <q-input
-            filled
-            v-model="amount_usd"
-            type="number"
-            label="To USD"
-            readonly
-            /><br/>
+          filled
+          v-model="amount_usd"
+          type="number"
+          label="To USD"
+          readonly
+        >
+          <template v-slot:append>
+            <small class="text-bold">USD</small>
+          </template>
+        </q-input>
       </q-card-section>
     </q-card>
   </q-page>
@@ -48,22 +53,24 @@ import { useConverterStore } from '../stores/converter-store';
 
 const general = useGeneralStore();
 const converter = useConverterStore();
-const priceOption = ref('Bitcoin (BTC)');
+const priceOption = ref(converter.options[0]);
 const amount = ref('');
 const amount_usd = ref('');
-const isMobile = ref(true);
+const symbol = ref('BTC');
 
 const updateToUSD = async () => {
   const indexPrice = await converter.list_prices.findIndex(d => d.cryptocurrency == priceOption.value);
   const price = Number(converter.list_prices[indexPrice].to_usd);
-  amount_usd.value = general.numberToString((Number(amount.value) * price), 4);
+  await Promise.all([
+    symbol.value = converter.list_prices[indexPrice].symbol,
+    amount_usd.value = general.numberToString((Number(amount.value) * price), 4)
+  ]);
 };
 
 onMounted(() => {
   if (converter.list_prices.length == 0) {
     converter.getPrice();
   }
-  isMobile.value = window.innerWidth <= 768;
 });
 
 defineOptions({
