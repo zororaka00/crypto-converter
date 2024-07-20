@@ -1,0 +1,22 @@
+/* app global css */
+body {
+    background: linear-gradient(135deg, #ff6f61, #ffdd59);
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-navbar {
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.b-card {
+    background: linear-gradient(135deg, #f8b500, #fceabb, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
