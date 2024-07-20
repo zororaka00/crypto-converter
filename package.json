@@ -1,7 +1,7 @@
 {
   "name": "converter",
   "version": "0.0.1",
-  "description": "Crypto Converter",
+  "description": "Use Crypto Converter to convert BTC and ETH units and check current prices. Effortlessly track and manage your cryptocurrency. Privacy-focused and user-friendly.",
   "productName": "Crypto Converter",
   "author": "Zoro Raka <rakawidhiantoro@gmail.com>",
   "private": true,
