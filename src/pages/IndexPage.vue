@@ -42,12 +42,10 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
 
 import { useGeneralStore } from '../stores/general-store';
 import { useConverterStore } from '../stores/converter-store';
 
-const route = useRoute();
 const general = useGeneralStore();
 const converter = useConverterStore();
 const priceOption = ref('Bitcoin (BTC)');
@@ -65,7 +63,7 @@ onMounted(() => {
   if (converter.list_prices.length == 0) {
     converter.getPrice();
   }
-  isMobile.value = route.query.mobile === '1';
+  isMobile.value = window.innerWidth <= 768;
 });
 
 defineOptions({
