@@ -48,6 +48,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
+import AdsComponent from '../components/AdsComponent.vue';
 import { useGeneralStore } from '../stores/general-store';
 import { useConverterStore } from '../stores/converter-store';
 

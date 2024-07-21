@@ -106,6 +106,7 @@ const total_price = ref('');
 
 const updateUnit = async (type: string) => {
     var amount = 0;
+
     if (type == 'wei') {
         amount = Number(amount_wei.value) / (10 ** 18);
     } else if (type == 'kwei') {
@@ -117,11 +118,12 @@ const updateUnit = async (type: string) => {
     } else if (type == 'ethereum') {
         amount = Number(amount_ethereum.value);
     }
+
     await Promise.all([
-        type != 'wei' ? amount_wei.value = general.numberToString(amount / (10 ** 18), 36) : null,
-        type != 'kwei' ? amount_kwei.value = general.numberToString(amount / (10 ** 15), 36) : null,
-        type != 'mwei' ? amount_mwei.value = general.numberToString(amount / (10 ** 12), 36) : null,
-        type != 'gwei' ? amount_gwei.value = general.numberToString(amount / (10 ** 9), 36) : null,
+        type != 'wei' ? amount_wei.value = general.numberToString(amount * (10 ** 18), 36) : null,
+        type != 'kwei' ? amount_kwei.value = general.numberToString(amount * (10 ** 15), 36) : null,
+        type != 'mwei' ? amount_mwei.value = general.numberToString(amount * (10 ** 12), 36) : null,
+        type != 'gwei' ? amount_gwei.value = general.numberToString(amount * (10 ** 9), 36) : null,
         type != 'ethereum' ? amount_ethereum.value = general.numberToString(amount, 36) : null,
         total_price.value = general.numberToString(amount * Number(converter.list_prices[indexPrice.value].to_usd), 36)
     ]);

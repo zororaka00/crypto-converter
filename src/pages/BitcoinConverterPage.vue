@@ -94,6 +94,7 @@ const total_price = ref('');
 
 const updateUnit = async (type: string) => {
     var amount = 0;
+
     if (type == 'satoshi') {
         amount = Number(amount_satoshi.value) / (10 ** 8);
     } else if (type == 'micro') {
@@ -103,10 +104,11 @@ const updateUnit = async (type: string) => {
     } else if (type == 'bitcoin') {
         amount = Number(amount_bitcoin.value);
     }
+
     await Promise.all([
-        type != 'satoshi' ? amount_satoshi.value = general.numberToString(amount / (10 ** 8), 18) : null,
-        type != 'micro' ? amount_micro.value = general.numberToString(amount / (10 ** 6), 18) : null,
-        type != 'milli' ? amount_milli.value = general.numberToString(amount / (10 ** 3), 18) : null,
+        type != 'satoshi' ? amount_satoshi.value = general.numberToString(amount * (10 ** 8), 18) : null,
+        type != 'micro' ? amount_micro.value = general.numberToString(amount * (10 ** 6), 18) : null,
+        type != 'milli' ? amount_milli.value = general.numberToString(amount * (10 ** 3), 18) : null,
         type != 'bitcoin' ? amount_bitcoin.value = general.numberToString(amount, 18) : null,
         total_price.value = general.numberToString(amount * Number(converter.list_prices[indexPrice.value].to_usd), 18)
     ]);
