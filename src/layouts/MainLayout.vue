@@ -46,10 +46,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
 import { useGeneralStore } from '../stores/general-store';
 
+const route = useRoute();
 const general = useGeneralStore();
 const isLoad = ref(false);
 const linksList: EssentialLinkProps[] = [
@@ -79,7 +81,8 @@ function toggleLeftDrawer () {
 }
 
 onMounted(() => {
-  general.is_mobile = window.innerWidth <= 768;
+  const isMobile = route.query.app;
+  general.is_mobile = isMobile == '1';
   isLoad.value = true;
 });
 
