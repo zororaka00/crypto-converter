@@ -86,17 +86,19 @@ export const useConverterStore = defineStore('converter', {
                         apr: `${general.numberToString(apr, 2)}%`,
                         url: d.url
                     };
-                } else if (d.label.includes('(rETH)')) {
-                    const data_rocketpool = await api.get(d.api);
-                    const apr = +data_rocketpool.data.rethAPR;
-                    return {
-                        api: d.api,
-                        label: d.label,
-                        value_apr: apr,
-                        apr: `${general.numberToString(apr, 2)}%`,
-                        url: d.url
-                    };
-                } else if (d.label.includes('(BETH)')) {
+                }
+                // else if (d.label.includes('(rETH)')) {
+                //     const data_rocketpool = await api.get(d.api);
+                //     const apr = +data_rocketpool.data.rethAPR;
+                //     return {
+                //         api: d.api,
+                //         label: d.label,
+                //         value_apr: apr,
+                //         apr: `${general.numberToString(apr, 2)}%`,
+                //         url: d.url
+                //     };
+                // }
+                else if (d.label.includes('(BETH)')) {
                     const data_binance = await api.get(d.api);
                     const apr = +data_binance.data.data.annualInterestRate * 100;
                     return {
