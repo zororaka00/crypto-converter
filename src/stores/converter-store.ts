@@ -32,13 +32,13 @@ export const useConverterStore = defineStore('converter', {
             apr: '0%',
             url: 'https://stake.lido.fi/?ref=0x0fFee57EAA1026857E381BC51B6832735006fc6a'
         },
-        {
-            api: 'https://stake.rocketpool.net/api/mainnet/payload',
-            label: 'Rocketpool (rETH)',
-            value_apr: 0,
-            apr: '0%',
-            url: 'https://stake.rocketpool.net/'
-        },
+        // {
+        //     api: 'https://stake.rocketpool.net/api/mainnet/payload',
+        //     label: 'Rocketpool (rETH)',
+        //     value_apr: 0,
+        //     apr: '0%',
+        //     url: 'https://stake.rocketpool.net/'
+        // },
         {
             api: 'https://www.binance.info/bapi/earn/v1/public/pos/cftoken/project/getPurchasableProject',
             label: 'Binance ETH (BETH)',
