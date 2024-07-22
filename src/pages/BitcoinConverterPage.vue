@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import AdsComponent from '../components/AdsComponent.vue';
 import { useGeneralStore } from '../stores/general-store';
@@ -113,12 +113,6 @@ const updateUnit = async (type: string) => {
         total_price.value = general.numberToString(amount * Number(converter.list_prices[indexPrice.value].to_usd), 18)
     ]);
 };
-
-onMounted(async () => {
-  if (converter.list_prices.length == 0) {
-    await Promise.all([converter.getPrice()]);
-  }
-});
 
 defineOptions({
     name: 'BitcoinConverterPage'

@@ -50,9 +50,11 @@ import { useRoute } from 'vue-router';
 
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
 import { useGeneralStore } from '../stores/general-store';
+import { useConverterStore } from 'src/stores/converter-store';
 
 const route = useRoute();
 const general = useGeneralStore();
+const converter = useConverterStore();
 const isLoad = ref(false);
 const linksList: EssentialLinkProps[] = [
   {
@@ -73,6 +75,12 @@ const linksList: EssentialLinkProps[] = [
     icon: 'mdi-ethereum',
     toLink: '/eth-converter'
   },
+  {
+    title: 'ETH Liquid Staking',
+    caption: 'Best APR Liquid Staking',
+    icon: 'mdi-ethereum',
+    toLink: '/eth-liquid-staking'
+  },
 ];
 const leftDrawerOpen = ref(false);
 
@@ -84,6 +92,9 @@ onMounted(() => {
   const isMobile = route.query.app;
   general.is_mobile = isMobile == '1';
   isLoad.value = true;
+  if (converter.list_prices.length == 0) {
+    converter.getPrice();
+  }
 });
 
 defineOptions({

@@ -16,6 +16,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/EthereumConverterPage.vue') }],
   },
+  {
+    path: '/eth-liquid-staking',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/EthereumLiquidStakingPage.vue') }],
+  },
 
   // Always leave this as last one,
   // but you can also remove it
