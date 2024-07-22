@@ -44,7 +44,7 @@ export const useConverterStore = defineStore('converter', {
             label: 'Binance ETH (BETH)',
             value_apr: 0,
             apr: '0%',
-            url: 'https://www.binance.info/en/ethereum-staking'
+            url: 'https://www.binance.com/en/ethereum-staking'
         }
     ] as Array<IListLiquidStaking>
   }),
