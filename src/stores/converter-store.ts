@@ -75,9 +75,8 @@ export const useConverterStore = defineStore('converter', {
         general.showLoading();
         try {
             const data_liquid_staking: any = await Promise.all(this.list_liquid_staking.map(async d => {
-                if (d.label.includes('(sETH)')) {
+                if (d.label.includes('(stETH)')) {
                     const data_lido = await api.get(d.api);
-                    console.log({data_lido})
                     const apr = +data_lido.data.data.smaApr;
                     return {
                         api: d.api,
