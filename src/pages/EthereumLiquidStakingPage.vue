@@ -4,6 +4,7 @@
     <q-card flat bordered class="col text-center b-card">
         <q-card-section>
             <div class="text-h5 text-bold">Ethereum Liquid Staking</div>
+            <div class="text-small text-italic">List Platform Best APR</div>
         </q-card-section>
 
         <q-separator inset />
