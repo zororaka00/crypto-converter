@@ -60,6 +60,27 @@ export const useConverterStore = defineStore('converter', {
         //     apr: '0%',
         //     url: 'https://quest.puffer.fi/home'
         // }
+        {
+            api: 'https://api.frax.finance/v2/frxeth/summary/latest',
+            label: 'Frax Ether (frxETH)',
+            value_apr: 0,
+            apr: '0%',
+            url: 'https://app.frax.finance/frxeth/mint'
+        },
+        {
+            api: 'https://eth-api.lido.fi/v1/protocol/steth/apr/sma',
+            label: 'Stakestone (STONE)',
+            value_apr: 0,
+            apr: '0%',
+            url: 'https://app.stakestone.io/u/stake'
+        },
+        {
+            api: 'https://v3-lrt.svc.swellnetwork.io/api/tokens/rsweth/apr',
+            label: 'Swell (rswETH)',
+            value_apr: 0,
+            apr: '0%',
+            url: 'https://app.swellnetwork.io/restake'
+        }
     ] as Array<IListLiquidStaking>
   }),
   actions: {
@@ -89,7 +110,7 @@ export const useConverterStore = defineStore('converter', {
         general.showLoading();
         try {
             const data_liquid_staking: any = await Promise.all(this.list_liquid_staking.map(async d => {
-                if (d.label.includes('(stETH)')) {
+                if (d.label.includes('(stETH)') || d.label.includes('(STONE)')) {
                     const data_lido = await api.get(d.api);
                     const apr = +data_lido.data.data.smaApr;
                     return {
@@ -143,6 +164,28 @@ export const useConverterStore = defineStore('converter', {
                 //         url: d.url
                 //     };
                 // }
+                else if (d.label.includes('(frxETH)')) {
+                    const data_frax = await api.get(d.api);
+                    const apr = +data_frax.data.sfrxethApr;
+                    return {
+                        api: d.api,
+                        label: d.label,
+                        value_apr: apr,
+                        apr: `${general.numberToString(apr, 2)}%`,
+                        url: d.url
+                    };
+                } else if (d.label.includes('(rswETH)')) {
+                    const data_swell = await api.get(d.api);
+                    console.log({data_swell})
+                    const apr = +data_swell.data;
+                    return {
+                        api: d.api,
+                        label: d.label,
+                        value_apr: apr,
+                        apr: `${general.numberToString(apr, 2)}%`,
+                        url: d.url
+                    };
+                }
             }));
             data_liquid_staking.sort((a: any, b: any) => b.value_apr - a.value_apr);
             this.list_liquid_staking = data_liquid_staking;
