@@ -18,7 +18,8 @@
                     readonly
                     >
                     <template v-slot:append>
-                        <q-btn filled color="primary" label="Go Stake" @click="general.toUrl(liquid_staking.url)" />
+                        <q-btn v-if="!general.is_mobile" filled color="primary" label="Go Stake" @click="general.toUrl(liquid_staking.url)" />
+                        <q-btn v-else filled color="primary" label="Copy Link" @click="general.copyClipboard(liquid_staking.url, 'Link copied')" />
                     </template>
                 </q-input><br/>
             </div>
@@ -37,7 +38,11 @@ import { useConverterStore } from '../stores/converter-store';
 const general = useGeneralStore();
 const converter = useConverterStore();
 
-onMounted(() => converter.getLiquidStaking());
+onMounted(() => {
+    if (converter.list_liquid_staking[0].value_apr == 0) {
+        converter.getLiquidStaking();
+    }
+});
 
 defineOptions({
     name: 'EthereumLiquidStakingPage'
