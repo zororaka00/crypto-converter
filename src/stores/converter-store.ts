@@ -45,6 +45,20 @@ export const useConverterStore = defineStore('converter', {
             value_apr: 0,
             apr: '0%',
             url: 'https://www.binance.com/en/ethereum-staking'
+        },
+        {
+            api: 'https://meth.mantle.xyz/api/stats/apy',
+            label: 'Mantle (mETH)',
+            value_apr: 0,
+            apr: '0%',
+            url: 'https://meth.mantle.xyz/stake'
+        },
+        {
+            api: 'https://quest-api.puffer.fi/puffer-quest/home/staked_data',
+            label: 'Puffer Finance (pufETH)',
+            value_apr: 0,
+            apr: '0%',
+            url: 'https://quest.puffer.fi/home'
         }
     ] as Array<IListLiquidStaking>
   }),
@@ -100,6 +114,26 @@ export const useConverterStore = defineStore('converter', {
                 else if (d.label.includes('(BETH)')) {
                     const data_binance = await api.get(d.api);
                     const apr = +data_binance.data.data.annualInterestRate * 100;
+                    return {
+                        api: d.api,
+                        label: d.label,
+                        value_apr: apr,
+                        apr: `${general.numberToString(apr, 2)}%`,
+                        url: d.url
+                    };
+                } else if (d.label.includes('(mETH)')) {
+                    const data_mantle = await api.get(d.api);
+                    const apr = +data_mantle.data.data[0].FiveDayAPY * 100;
+                    return {
+                        api: d.api,
+                        label: d.label,
+                        value_apr: apr,
+                        apr: `${general.numberToString(apr, 2)}%`,
+                        url: d.url
+                    };
+                } else if (d.label.includes('(pufETH)')) {
+                    const data_puffer = await api.get(d.api);
+                    const apr = +data_puffer.data.data.apy;
                     return {
                         api: d.api,
                         label: d.label,
