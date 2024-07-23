@@ -15,6 +15,7 @@
           Crypto Converter
         </q-toolbar-title>
 
+        <div v-if="!general.is_mobile"><q-btn filled color="positive" label="Buy Crypto" @click="general.toUrl('https://www.bybit.com/en/invite/?ref=PJKQN')" /></div>
       </q-toolbar>
     </q-header>
 
