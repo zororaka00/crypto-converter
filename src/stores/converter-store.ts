@@ -53,13 +53,13 @@ export const useConverterStore = defineStore('converter', {
             apr: '0%',
             url: 'https://meth.mantle.xyz/stake'
         },
-        {
-            api: 'https://quest-api.puffer.fi/puffer-quest/home/staked_data',
-            label: 'Puffer Finance (pufETH)',
-            value_apr: 0,
-            apr: '0%',
-            url: 'https://quest.puffer.fi/home'
-        }
+        // {
+        //     api: 'https://quest-api.puffer.fi/puffer-quest/home/staked_data',
+        //     label: 'Puffer Finance (pufETH)',
+        //     value_apr: 0,
+        //     apr: '0%',
+        //     url: 'https://quest.puffer.fi/home'
+        // }
     ] as Array<IListLiquidStaking>
   }),
   actions: {
@@ -131,17 +131,18 @@ export const useConverterStore = defineStore('converter', {
                         apr: `${general.numberToString(apr, 2)}%`,
                         url: d.url
                     };
-                } else if (d.label.includes('(pufETH)')) {
-                    const data_puffer = await api.get(d.api);
-                    const apr = +data_puffer.data.data.apy;
-                    return {
-                        api: d.api,
-                        label: d.label,
-                        value_apr: apr,
-                        apr: `${general.numberToString(apr, 2)}%`,
-                        url: d.url
-                    };
                 }
+                // else if (d.label.includes('(pufETH)')) {
+                //     const data_puffer = await api.get(d.api);
+                //     const apr = +data_puffer.data.data.apy;
+                //     return {
+                //         api: d.api,
+                //         label: d.label,
+                //         value_apr: apr,
+                //         apr: `${general.numberToString(apr, 2)}%`,
+                //         url: d.url
+                //     };
+                // }
             }));
             data_liquid_staking.sort((a: any, b: any) => b.value_apr - a.value_apr);
             this.list_liquid_staking = data_liquid_staking;
