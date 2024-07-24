@@ -3,6 +3,12 @@
     <AdsComponent /><br/>
     <q-card flat bordered class="col text-center b-card">
         <q-card-section>
+            <p class="text-bold text-h6">What is Ethereum Liquid Staking?</p>
+            Ethereum Liquid Staking is a process where Ethereum holders can lock their ETH into staking protocols to help secure the Ethereum network while maintaining liquidity. This is done through third-party platforms that offer tokens representing the staked ETH. Consequently, users can still transact, trade, or use these tokens in decentralized finance (DeFi) applications even though their ETH is locked in staking. This process allows ETH holders to earn staking rewards without sacrificing the flexibility of using their assets.
+        </q-card-section>
+    </q-card><br/>
+    <q-card flat bordered class="col text-center b-card">
+        <q-card-section>
             <div class="text-h5 text-bold">Ethereum Liquid Staking</div>
             <div class="text-small text-italic">List Platform Best APR</div>
         </q-card-section>
@@ -23,13 +29,6 @@
                     </template>
                 </q-input><br/>
             </div>
-        </q-card-section>
-
-        <q-separator inset />
-
-        <q-card-section>
-            <p class="text-bold text-h6">What is Ethereum Liquid Staking?</p>
-            Ethereum Liquid Staking is a process where Ethereum holders can lock their ETH into staking protocols to help secure the Ethereum network while maintaining liquidity. This is done through third-party platforms that offer tokens representing the staked ETH. Consequently, users can still transact, trade, or use these tokens in decentralized finance (DeFi) applications even though their ETH is locked in staking. This process allows ETH holders to earn staking rewards without sacrificing the flexibility of using their assets.
         </q-card-section>
     </q-card><br/>
     <ProducthuntComponent />
