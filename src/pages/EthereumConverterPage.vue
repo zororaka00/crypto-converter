@@ -3,82 +3,83 @@
 <q-page class="q-pa-md">
     <AdsComponent /><br/>
     <q-card flat bordered class="col text-center b-card">
-    <q-card-section>
-        <div class="text-h5 text-bold">Ethereum Converter</div>
-    </q-card-section>
+        <q-card-section>
+            <div class="text-h5 text-bold">Ethereum Converter</div>
+        </q-card-section>
 
-    <q-separator inset />
+        <q-separator inset />
 
-    <q-card-section>
-        <q-input
-            filled
-            v-model="amount_wei"
-            type="number"
-            label="Wei"
-            @update:model-value="updateUnit('wei')"
-         >
-            <template v-slot:append>
-                <small class="text-bold">Wei</small>
-            </template>
-        </q-input><br/>
-        <q-input
-            filled
-            v-model="amount_kwei"
-            type="number"
-            label="Kwei (Kilowei)"
-            @update:model-value="updateUnit('kwei')"
-         >
-            <template v-slot:append>
-                <small class="text-bold">Kwei</small>
-            </template>
-        </q-input><br/>
-        <q-input
-            filled
-            v-model="amount_mwei"
-            type="number"
-            label="Mwei (Megawei)"
-            @update:model-value="updateUnit('mwei')"
-         >
-            <template v-slot:append>
-                <small class="text-bold">Mwei</small>
-            </template>
-        </q-input><br/>
-        <q-input
-            filled
-            v-model="amount_gwei"
-            type="number"
-            label="Gwei (Gigawei)"
-            @update:model-value="updateUnit('gwei')"
-         >
-            <template v-slot:append>
-                <small class="text-bold">Gwei</small>
-            </template>
-        </q-input><br/>
-        <q-input
-            filled
-            v-model="amount_ethereum"
-            type="number"
-            label="Ethereum"
-            @update:model-value="updateUnit('ethereum')"
-        >
-            <template v-slot:append>
-                <small class="text-bold">ETH</small>
-            </template>
-        </q-input><br/>
+        <q-card-section>
             <q-input
                 filled
-                v-model="total_price"
+                v-model="amount_wei"
                 type="number"
-                label="Total Price"
-                :hint="price_usd"
-                readonly
+                label="Wei"
+                @update:model-value="updateUnit('wei')"
             >
                 <template v-slot:append>
-                    <small class="text-bold">USD</small>
+                    <small class="text-bold">Wei</small>
                 </template>
-            </q-input>
-    </q-card-section>
-    </q-card>
+            </q-input><br/>
+            <q-input
+                filled
+                v-model="amount_kwei"
+                type="number"
+                label="Kwei (Kilowei)"
+                @update:model-value="updateUnit('kwei')"
+            >
+                <template v-slot:append>
+                    <small class="text-bold">Kwei</small>
+                </template>
+            </q-input><br/>
+            <q-input
+                filled
+                v-model="amount_mwei"
+                type="number"
+                label="Mwei (Megawei)"
+                @update:model-value="updateUnit('mwei')"
+            >
+                <template v-slot:append>
+                    <small class="text-bold">Mwei</small>
+                </template>
+            </q-input><br/>
+            <q-input
+                filled
+                v-model="amount_gwei"
+                type="number"
+                label="Gwei (Gigawei)"
+                @update:model-value="updateUnit('gwei')"
+            >
+                <template v-slot:append>
+                    <small class="text-bold">Gwei</small>
+                </template>
+            </q-input><br/>
+            <q-input
+                filled
+                v-model="amount_ethereum"
+                type="number"
+                label="Ethereum"
+                @update:model-value="updateUnit('ethereum')"
+            >
+                <template v-slot:append>
+                    <small class="text-bold">ETH</small>
+                </template>
+            </q-input><br/>
+                <q-input
+                    filled
+                    v-model="total_price"
+                    type="number"
+                    label="Total Price"
+                    :hint="price_usd"
+                    readonly
+                >
+                    <template v-slot:append>
+                        <small class="text-bold">USD</small>
+                    </template>
+                </q-input>
+        </q-card-section>
+    </q-card><br/>
+    <ProducthuntComponent />
 </q-page>
 </template>
 
@@ -86,6 +87,7 @@
 import { ref, computed } from 'vue';
 
 import AdsComponent from '../components/AdsComponent.vue';
+import ProducthuntComponent from '../components/ProducthuntComponent.vue';
 import { useGeneralStore } from '../stores/general-store';
 import { useConverterStore } from 'src/stores/converter-store';
 

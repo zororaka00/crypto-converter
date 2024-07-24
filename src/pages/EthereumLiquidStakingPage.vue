@@ -31,7 +31,8 @@
             <p class="text-bold text-h6">What is Ethereum Liquid Staking?</p>
             Ethereum Liquid Staking is a process where Ethereum holders can lock their ETH into staking protocols to help secure the Ethereum network while maintaining liquidity. This is done through third-party platforms that offer tokens representing the staked ETH. Consequently, users can still transact, trade, or use these tokens in decentralized finance (DeFi) applications even though their ETH is locked in staking. This process allows ETH holders to earn staking rewards without sacrificing the flexibility of using their assets.
         </q-card-section>
-    </q-card>
+    </q-card><br/>
+    <ProducthuntComponent />
 </q-page>
 </template>
 
@@ -39,6 +40,7 @@
 import { onMounted } from 'vue';
 
 import AdsComponent from '../components/AdsComponent.vue';
+import ProducthuntComponent from '../components/ProducthuntComponent.vue';
 import { useGeneralStore } from '../stores/general-store';
 import { useConverterStore } from '../stores/converter-store';
 

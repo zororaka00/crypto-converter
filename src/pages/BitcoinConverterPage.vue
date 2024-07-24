@@ -67,7 +67,8 @@
                 </template>
             </q-input>
         </q-card-section>
-    </q-card>
+    </q-card><br/>
+    <ProducthuntComponent />
 </q-page>
 </template>
 
@@ -75,6 +76,7 @@
 import { computed, ref } from 'vue';
 
 import AdsComponent from '../components/AdsComponent.vue';
+import ProducthuntComponent from '../components/ProducthuntComponent.vue';
 import { useGeneralStore } from '../stores/general-store';
 import { useConverterStore } from 'src/stores/converter-store';
 
