@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /
+
+User-agent: *
+Allow: /#/
+Allow: /#/btc-converter
+Allow: /#/eth-converter
+Allow: /#/eth-liquid-staking
