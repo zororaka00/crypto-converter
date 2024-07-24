@@ -6,3 +6,5 @@ Allow: /#/
 Allow: /#/btc-converter
 Allow: /#/eth-converter
 Allow: /#/eth-liquid-staking
+
+Sitemap: https://www.crypto-converter.xyz/sitemap.xml
