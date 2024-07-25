@@ -15,7 +15,7 @@
           Crypto Converter
         </q-toolbar-title>
 
-        <div v-if="!general.is_mobile"><q-btn filled color="positive" label="Buy Crypto" @click="general.toUrl('https://www.bybit.com/en/invite/?ref=PJKQN')" /></div>
+        <div v-if="!general.is_mobile"><q-btn filled color="positive" label="Buy Crypto" @click="toBuyCrypto()" /></div>
       </q-toolbar>
     </q-header>
 
@@ -88,6 +88,8 @@ const leftDrawerOpen = ref(false);
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
+const toBuyCrypto = () => general.toUrl(general.is_indonesia ? 'https://www.bybitglobal.com/invite?ref=PJKQN' : 'https://www.bybit.com/en/invite/?ref=PJKQN');
 
 onMounted(() => {
   const isMobile = route.query.app;

@@ -86,6 +86,7 @@ export const useConverterStore = defineStore('converter', {
   actions: {
     getPrice() {
         const general = useGeneralStore();
+        general.is_indonesia = navigator.language == 'id-ID';
         general.showLoading();
         api.get('https://www.binance.info/api/v3/ticker/price').then(async ({ data }) => {
             this.list_prices = await Promise.all(this.options.map(async d => {

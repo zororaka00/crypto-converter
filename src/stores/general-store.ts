@@ -7,6 +7,7 @@ export const useGeneralStore = defineStore('general', {
     uq: useQuasar(),
     menu: 'home',
     is_mobile: false,
+    is_indonesia: false
   }),
   actions: {
     showLoading() {
