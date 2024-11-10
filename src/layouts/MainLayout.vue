@@ -82,6 +82,12 @@ const linksList: EssentialLinkProps[] = [
     icon: 'mdi-ethereum',
     toLink: '/eth-liquid-staking'
   },
+  {
+    title: 'Donate',
+    caption: 'Donate to Developer',
+    icon: 'mdi-gift',
+    toLink: '/donate'
+  },
 ];
 const leftDrawerOpen = ref(false);
 
