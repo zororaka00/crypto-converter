@@ -3,6 +3,13 @@
       <AdsComponent /><br/>
       <q-card flat bordered class="col text-center b-card">
           <q-card-section>
+              <p class="text-bold text-h6">About Developer</p>
+              <p :class="general.is_mobile ? 'text-small' : ''">Raka WA is a dedicated Blockchain and AI development expert with a wealth of experience in crafting innovative smart contracts, AI-driven systems, and blockchain-integrated solutions. Specializing in developing scalable, secure applications that utilize advanced technologies to achieve significant real-world results.</p>
+              <q-btn label="Learn More" color="primary" @click="general.toUrl('https://www.zororaka.my.id/')" />
+            </q-card-section>
+      </q-card><br/>
+      <q-card flat bordered class="col text-center b-card">
+          <q-card-section>
               <div class="text-h5 text-bold">Donate to Developer</div>
           </q-card-section>
 

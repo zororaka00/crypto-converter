@@ -83,10 +83,10 @@ const linksList: EssentialLinkProps[] = [
     toLink: '/eth-liquid-staking'
   },
   {
-    title: 'Donate',
-    caption: 'Donate to Developer',
-    icon: 'mdi-gift',
-    toLink: '/donate'
+    title: 'About',
+    caption: 'About Developer',
+    icon: 'mdi-information',
+    toLink: '/developer'
   },
 ];
 const leftDrawerOpen = ref(false);

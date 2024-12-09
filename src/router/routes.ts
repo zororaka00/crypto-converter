@@ -22,9 +22,9 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/EthereumLiquidStakingPage.vue') }],
   },
   {
-    path: '/donate',
+    path: '/developer',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/DonatePage.vue') }],
+    children: [{ path: '', component: () => import('pages/DeveloperPage.vue') }],
   },
 
   // Always leave this as last one,
