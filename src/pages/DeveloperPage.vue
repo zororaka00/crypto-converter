@@ -8,7 +8,8 @@
               <div class="q-gutter-sm">
                 <q-btn label="Learn More" color="primary" icon="mdi-arrow-top-right-thick" @click="general.toUrl('https://www.zororaka.my.id/')" />
                 <q-btn label="View Source Code" color="secondary" icon="mdi-github" @click="general.toUrl('https://github.com/zororaka00/crypto-converter')" />
-              </div>
+              </div><br/>
+              <q-btn label="Rapid API Service (Real-Time Multi-Chain Balance Checker)" color="purple" icon="mdi-api" @click="general.toUrl('https://rapidapi.com/rakawidhiantoro/api/real-time-multi-chain-balance-checker')" />
             </q-card-section>
       </q-card><br/>
       <q-card flat bordered class="col text-center b-card">
