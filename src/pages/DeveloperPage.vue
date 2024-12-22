@@ -36,6 +36,11 @@
                 </a>
               </div>
             </div>
+            <div class="row q-col-gutter-md justify-center q-mb-md">
+              <div class="col-auto">
+                <a href="https://www.buymeacoffee.com/zororaka" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" /></a>
+              </div>
+            </div>
 
             <q-input filled v-model="btcAddress" label="Bitcoin Address" readonly>
               <template v-slot:append>
