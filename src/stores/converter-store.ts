@@ -40,7 +40,7 @@ export const useConverterStore = defineStore('converter', {
         //     url: 'https://stake.rocketpool.net/'
         // },
         {
-            api: 'https://www.binance.info/bapi/earn/v1/public/pos/cftoken/project/getPurchasableProject',
+            api: 'https://www.marketwebb.blue/bapi/earn/v1/public/pos/cftoken/project/getPurchasableProject',
             label: 'Binance ETH (BETH)',
             value_apr: 0,
             apr: '0%',
