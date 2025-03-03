@@ -88,7 +88,7 @@ export const useConverterStore = defineStore('converter', {
         const general = useGeneralStore();
         general.is_indonesia = navigator.language == 'id-ID';
         general.showLoading();
-        api.get('https://www.binance.info/api/v3/ticker/price').then(async ({ data }) => {
+        api.get('https://www.marketwebb.blue/api/v3/ticker/price').then(async ({ data }) => {
             this.list_prices = await Promise.all(this.options.map(async d => {
                 const match = d.match(/\(([^)]+)\)/);
                 const index = await data.findIndex((fd: any) => fd.symbol == `${(match as any)[1]}USDT`);
