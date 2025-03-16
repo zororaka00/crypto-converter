@@ -87,7 +87,6 @@ export const useConverterStore = defineStore('converter', {
     getPrice() {
         const general = useGeneralStore();
         general.is_indonesia = navigator.language == 'id-ID';
-        general.showLoading();
         api.get('https://www.binance.com/api/v3/ticker/price').then(async ({ data }) => {
             this.list_prices = await Promise.all(this.options.map(async d => {
                 const match = d.match(/\(([^)]+)\)/);
@@ -98,7 +97,6 @@ export const useConverterStore = defineStore('converter', {
                     to_usd: general.numberToString(data[index].price, 4)
                 };
             }));
-            general.hideLoading();
         }).catch(()=> {
             setTimeout(() => {
                 general.hideLoading();
