@@ -40,7 +40,7 @@ export const useConverterStore = defineStore('converter', {
         //     url: 'https://stake.rocketpool.net/'
         // },
         {
-            api: 'https://www.marketwebb.blue/bapi/earn/v1/public/pos/cftoken/project/getPurchasableProject',
+            api: 'https://www.binance.com/bapi/earn/v1/public/pos/cftoken/project/getPurchasableProject',
             label: 'Binance ETH (BETH)',
             value_apr: 0,
             apr: '0%',
@@ -88,7 +88,7 @@ export const useConverterStore = defineStore('converter', {
         const general = useGeneralStore();
         general.is_indonesia = navigator.language == 'id-ID';
         general.showLoading();
-        api.get('https://www.marketwebb.blue/api/v3/ticker/price').then(async ({ data }) => {
+        api.get('https://www.binance.com/api/v3/ticker/price').then(async ({ data }) => {
             this.list_prices = await Promise.all(this.options.map(async d => {
                 const match = d.match(/\(([^)]+)\)/);
                 const index = await data.findIndex((fd: any) => fd.symbol == `${(match as any)[1]}USDT`);
@@ -108,7 +108,6 @@ export const useConverterStore = defineStore('converter', {
     },
     async getLiquidStaking() {
         const general = useGeneralStore();
-        general.showLoading();
         try {
             const data_liquid_staking: any = await Promise.all(this.list_liquid_staking.map(async d => {
                 if (d.label.includes('(stETH)') || d.label.includes('(STONE)')) {
@@ -134,15 +133,16 @@ export const useConverterStore = defineStore('converter', {
                 //     };
                 // }
                 else if (d.label.includes('(BETH)')) {
-                    const data_binance = await api.get(d.api);
-                    const apr = +data_binance.data.data.annualInterestRate * 100;
-                    return {
-                        api: d.api,
-                        label: d.label,
-                        value_apr: apr,
-                        apr: `${general.numberToString(apr, 2)}%`,
-                        url: d.url
-                    };
+                    api.get(d.api).then(data_binance => {
+                      const apr = +data_binance.data.data.annualInterestRate * 100;
+                      return {
+                          api: d.api,
+                          label: d.label,
+                          value_apr: apr,
+                          apr: `${general.numberToString(apr, 2)}%`,
+                          url: d.url
+                      };
+                    });
                 } else if (d.label.includes('(mETH)')) {
                     const data_mantle = await api.get(d.api);
                     const apr = +data_mantle.data.data[0].FiveDayAPY * 100;
@@ -190,9 +190,8 @@ export const useConverterStore = defineStore('converter', {
             }));
             data_liquid_staking.sort((a: any, b: any) => b.value_apr - a.value_apr);
             this.list_liquid_staking = data_liquid_staking;
-            general.hideLoading();
         } catch (error) {
-            general.hideLoading();
+            return;
         }
     }
   },
